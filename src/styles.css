@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+/* GLOBAL DARK THEME */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #020617 0%, #0f172a 65%);
+  color: #e5e7eb;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}

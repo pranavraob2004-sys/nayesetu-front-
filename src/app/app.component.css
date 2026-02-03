@@ -1,0 +1,111 @@
+.app-shell {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  font-family: system-ui, sans-serif;
+  color: #e5e7eb;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.header h2 {
+  font-size: 14px;
+  color: #93c5fd;
+}
+
+.tagline {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.query-card {
+  background: #020617;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.6);
+}
+
+textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #e5e7eb;
+  font-size: 14px;
+  resize: vertical;
+  outline: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+button {
+  background: #2563eb;
+  border: none;
+  color: white;
+  padding: 6px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .6;
+}
+
+.hint {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.section {
+  margin-top: 22px;
+  background: #020617;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.55);
+}
+
+.section.article {
+  border-left: 3px solid #38bdf8;
+}
+
+.section.full-text {
+  border-left: 3px solid #a78bfa;
+}
+
+.section.explanation {
+  border-left: 3px solid #22c55e;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #38bdf8;
+  margin-bottom: 8px;
+}
+
+.section-body {
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
