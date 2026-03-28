@@ -1,0 +1,22 @@
+<section class="auth-shell">
+  <div class="auth-card card-glass">
+    <img class="auth-logo" src="assets/nyayasetu-official.png" alt="NyayaSetu logo" />
+    <h1>Create Account</h1>
+    <p>Register to access NyayaSetu legal assistant.</p>
+
+    <input [(ngModel)]="name" type="text" placeholder="Full name" />
+    <input [(ngModel)]="email" type="email" placeholder="Email" />
+    <input [(ngModel)]="password" type="password" placeholder="Password" />
+
+    <button class="gold-button auth-submit" (click)="submit()" [disabled]="loading">
+      {{ loading ? 'Creating account...' : 'Sign up' }}
+    </button>
+
+    <div class="switch-link">
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </div>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </div>
+</section>

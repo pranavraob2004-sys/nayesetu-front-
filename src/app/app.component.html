@@ -1,53 +1,32 @@
 <div class="app-shell">
+  <nav class="navbar">
+    <a class="brand" routerLink="/">
+      <img class="brand-logo" src="assets/nyayasetu-official.png" alt="NyayaSetu logo" />
+      <div class="brand-text">
+        <span class="title">NyayaSetu</span>
+      </div>
+    </a>
 
-  <!-- HEADER -->
-  <header class="header">
-    <h1>NyayaSetu</h1>
-    <h2>AI-powered Legal Q&A Assistant</h2>
-    <p class="tagline">Nyaya = Justice · Setu = Bridge</p>
-  </header>
-
-  <!-- QUERY INPUT -->
-  <div class="query-card">
-    <textarea
-      [(ngModel)]="question"
-      (keydown)="onKeydown($event)"
-      rows="3"
-      placeholder="Ask about an Article, Part, or constitutional provision…">
-    </textarea>
-
-    <div class="actions">
-      <button (click)="submit()" [disabled]="loading">
-        {{ loading ? 'Thinking…' : 'Ask' }}
-      </button>
-      <span class="hint">Press Enter to ask · Shift+Enter for new line</span>
+    <div class="nav-center">
+      <a class="nav-center-link" [routerLink]="['/']" fragment="constitution">Constitution</a>
+      <a class="nav-center-link" [routerLink]="['/']" fragment="criminal-law">Criminal Law</a>
+      <a class="nav-center-link" [routerLink]="['/']" fragment="statutes">Statutes</a>
+      <a class="nav-center-link" [routerLink]="['/']" fragment="how-it-works">How it Works</a>
     </div>
-  </div>
 
-  <div class="section article" *ngIf="articleBlock">
-  <div class="section-title">Article</div>
-  <pre class="section-body">
-{{ articleBlock }}
-<span *ngIf="articleBlock.length < rawArticleText.length" class="cursor">▌</span>
-  </pre>
-</div>
+    <div class="nav-actions" *ngIf="!restoringSession">
+      <ng-container *ngIf="!isAuthenticated; else loggedInLinks">
+        <a class="nav-link nav-outline" routerLink="/login">Login</a>
+        <a class="nav-link nav-primary gold-button" routerLink="/signup">Sign Up</a>
+      </ng-container>
+      <ng-template #loggedInLinks>
+        <a class="user-chip" routerLink="/workspace">{{ user?.name || user?.email }}</a>
+        <button class="nav-link nav-outline" (click)="logout()">Logout</button>
+      </ng-template>
+    </div>
+  </nav>
 
-
-  <div class="section full-text" *ngIf="fullTextBlock">
-  <div class="section-title">Full Text</div>
-  <pre class="section-body">
-{{ fullTextBlock }}
-<span *ngIf="fullTextBlock.length < rawFullText.length" class="cursor">▌</span>
-  </pre>
-</div>
-
-
-  <!-- EXPLANATION -->
-  <div class="section explanation" *ngIf="explanation || loading">
-    <div class="section-title">Explanation</div>
-    <pre class="section-body">
-{{ explanation }}<span *ngIf="loading" class="cursor">▌</span>
-    </pre>
-  </div>
-
+  <main class="page-body">
+    <router-outlet></router-outlet>
+  </main>
 </div>

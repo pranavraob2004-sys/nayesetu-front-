@@ -1,9 +1,100 @@
-/* GLOBAL DARK THEME */
-html, body {
+﻿@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg: #fdf3eb;
+  --bg-mid: #f8ede3;
+  --bg-deep: #f2e4d7;
+  --panel: rgba(255, 255, 255, 0.72);
+  --panel-solid: #f7eee7;
+  --line: rgba(36, 29, 51, 0.14);
+  --line-strong: rgba(36, 29, 51, 0.26);
+  --text: #241d33;
+  --text-soft: #625877;
+  --gold: #241d33;
+  --gold-soft: #3b3153;
+  --teal: #625877;
+  --danger: #9d3f53;
+  --shadow: 0 20px 46px rgba(36, 29, 51, 0.13);
+
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at top, #020617 0%, #0f172a 65%);
-  color: #e5e7eb;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
   min-height: 100vh;
+  background:
+    radial-gradient(64rem 44rem at 80% -12%, rgba(36, 29, 51, 0.08), transparent 58%),
+    radial-gradient(48rem 34rem at 10% 2%, rgba(36, 29, 51, 0.05), transparent 58%),
+    linear-gradient(165deg, var(--bg) 0%, var(--bg-mid) 48%, var(--bg-deep) 100%);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.section-container {
+  width: min(1160px, 100%);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.card-glass {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.9), rgba(248, 237, 227, 0.8));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+.gold-button {
+  border: 1px solid rgba(36, 29, 51, 0.5);
+  background: linear-gradient(92deg, var(--gold) 0%, var(--gold-soft) 100%);
+  color: #fdf3eb;
+  font-weight: 700;
+  border-radius: 999px;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gold-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+  box-shadow: 0 10px 30px rgba(36, 29, 51, 0.22);
+}
+
+.logo-watermark {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding: 0 14px;
+  }
 }

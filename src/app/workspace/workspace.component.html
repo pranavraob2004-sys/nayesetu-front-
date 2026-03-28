@@ -1,0 +1,106 @@
+﻿<section class="workspace-shell" (click)="closeHistoryMenu()">
+  <aside class="history-panel">
+    <button class="new-chat-btn" (click)="startNewChat()">+ New chat</button>
+
+    <div class="history-head">
+      <div>
+        <div class="name">{{ user?.name }}</div>
+        <div class="email">{{ user?.email }}</div>
+      </div>
+    </div>
+
+    <div class="history-title">Chat History</div>
+    <div class="muted" *ngIf="!isAuthenticated">Login to save and view history.</div>
+    <div class="muted" *ngIf="historyLoading">Loading...</div>
+    <div class="muted" *ngIf="!historyLoading && history.length === 0">No history yet.</div>
+
+    <div *ngFor="let h of history" class="history-item">
+      <button class="history-open" (click)="selectHistory(h)">
+        {{ h.question }}
+      </button>
+      <div class="history-menu-wrap">
+        <button class="history-menu-btn" (click)="toggleHistoryMenu(h.history_id, $event)">...</button>
+        <div class="history-menu" *ngIf="activeHistoryMenuId === h.history_id">
+          <button class="history-menu-delete" (click)="deleteHistory(h)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <section class="content-panel" [class.has-results]="hasConversation">
+    <img class="logo-watermark workspace-watermark" src="assets/nyayasetu-official.png" alt="" aria-hidden="true" />
+
+    <div class="workspace-heading">
+      <img class="workspace-logo" src="assets/nyayasetu-official.png" alt="NyayaSetu logo" />
+      <h1>NyayaSetu</h1>
+      <p class="subhead">AI-powered Legal Assistant</p>
+      <p class="tagline">Nyaya · Justice · Setu · Bridge</p>
+    </div>
+
+    <div class="query-card card-glass">
+      <textarea
+        [(ngModel)]="question"
+        (keydown)="onKeydown($event)"
+        rows="4"
+        placeholder="Ask about rights, arrest safeguards, IPC vs BNS changes..."></textarea>
+
+      <div class="query-actions">
+        <select class="lang-select" [(ngModel)]="responseMode" [disabled]="loading || isTranscribing || isListening">
+          <option value="English">English</option>
+          <option value="Hindi">Hindi</option>
+          <option value="Hinglish">Hinglish</option>
+        </select>
+        <button class="primary gold-button" (click)="submit()" [disabled]="loading">{{ loading ? 'Thinking...' : 'Ask' }}</button>
+        <button
+          class="secondary mic-btn"
+          *ngIf="voiceInputAvailable"
+          (click)="toggleVoiceInput()"
+          [class.listening]="isListening"
+          [disabled]="loading || isTranscribing">
+          {{ isTranscribing ? 'Transcribing...' : (isListening ? 'Stop Mic' : 'Mic') }}
+        </button>
+        <button class="secondary" *ngIf="hasConversation" (click)="exportConversationToPdf()" [disabled]="loading">
+          Export PDF
+        </button>
+        <button class="secondary" *ngIf="loading" (click)="cancelGeneration()">Cancel</button>
+      </div>
+
+      <div class="muted speech-note" *ngIf="!voiceInputAvailable">
+        Voice input not supported in this browser. You can type your question.
+      </div>
+      <div class="muted speech-note" *ngIf="isListening">
+        Listening... click "Stop Mic" when done.
+      </div>
+      <div class="muted speech-note" *ngIf="isTranscribing">
+        Converting speech to text...
+      </div>
+      <div class="muted speech-note" *ngIf="resolvedResponseMode && hasConversation">
+        Response mode: {{ resolvedResponseMode }}
+      </div>
+      <div class="error" *ngIf="speechError">{{ speechError }}</div>
+    </div>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <div *ngFor="let p of provisions"
+         class="result-card provision-card card-glass"
+         [ngClass]="getStatuteClass(p.meta.document_id, p.meta.document_short_name)">
+      <div class="card-header">
+        <div class="statute">{{ getStatuteName(p.meta.document_id, p.meta.document_short_name) }}</div>
+        <div class="title">{{ p.meta.type }} {{ p.meta.number }} - {{ p.meta.title }}</div>
+        <div class="unit" *ngIf="p.meta.unit_number">{{ p.meta.unit_number }} - {{ p.meta.unit_title }}</div>
+      </div>
+      <div class="card-body">
+        <pre>{{ p.full_text }}</pre>
+      </div>
+    </div>
+
+    <div *ngIf="explanation" class="result-card explanation-card card-glass">
+      <div class="card-header explanation-header">AI Explanation</div>
+      <div class="card-body">
+        <pre>{{ explanation }}</pre>
+      </div>
+    </div>
+  </section>
+</section>
+

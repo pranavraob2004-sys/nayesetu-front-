@@ -1,0 +1,202 @@
+﻿<div class="home-page">
+  <section class="hero-wrap reveal" #revealEl>
+    <img class="logo-watermark hero-logo-watermark" src="assets/nyayasetu-official.png" alt="" aria-hidden="true" />
+
+    <div class="section-container hero-grid">
+      <article class="hero-left card-glass">
+        <p class="eyebrow">NyayaSetu</p>
+        <h1>Bridging Citizens and the Law</h1>
+        <p class="subtitle">
+          Understand Indian law with clarity through AI-powered legal intelligence.
+        </p>
+
+        <ul class="law-bullets">
+          <li>Constitution of India</li>
+          <li>Bharatiya Nyaya Sanhita</li>
+          <li>Bharatiya Nagarik Suraksha Sanhita</li>
+          <li>Bharatiya Sakshya Adhiniyam</li>
+        </ul>
+
+        <div class="search-box card-glass">
+          <label>Ask a legal question</label>
+          <div class="hero-search">
+            <input
+              type="text"
+              [(ngModel)]="homeQuestion"
+              [placeholder]="animatedPlaceholder" />
+            <button class="gold-button ask-hero-btn" (click)="openAskFlow()">Ask</button>
+          </div>
+
+          <div class="examples">
+            <button type="button" (click)="useExample('Explain Article 21')">"Explain Article 21"</button>
+            <button type="button" (click)="useExample('Punishment for theft under BNS')">"Punishment for theft under BNS"</button>
+            <button type="button" (click)="useExample('What is anticipatory bail?')">"What is anticipatory bail?"</button>
+          </div>
+        </div>
+
+        <p class="trust-line">Trusted legal references from official government statutes.</p>
+      </article>
+
+      <aside class="hero-preview card-glass">
+        <p class="preview-title">Legal AI Preview</p>
+        <div class="preview-question">What does Article 21 guarantee?</div>
+        <div class="preview-card card-glass">
+          <p class="preview-statute">Constitution of India</p>
+          <h3>Article 21 - Protection of life and personal liberty</h3>
+          <p>No person shall be deprived of life or personal liberty except according to procedure established by law.</p>
+        </div>
+        <div class="preview-card answer card-glass">
+          <h4>AI Summary</h4>
+          <p>Article 21 protects life, dignity and personal freedom, and the State can limit it only through valid legal procedure.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="content-section" id="why" #revealEl>
+    <div class="section-container">
+      <h2>Why NyayaSetu?</h2>
+      <div class="grid feature-grid">
+        <article class="feature-card card-glass">
+          <div class="feature-icon">
+            <img class="balance-icon" src="assets/icon-balance.svg" alt="" aria-hidden="true" />
+          </div>
+          <h3>Verified Legal Sources</h3>
+          <p>All answers are grounded in official statutory provisions.</p>
+        </article>
+        <article class="feature-card card-glass">
+          <div class="feature-icon">
+            <img class="balance-icon" src="assets/icon-balance.svg" alt="" aria-hidden="true" />
+          </div>
+          <h3>Context Aware AI</h3>
+          <p>Questions are interpreted with legal intent and context.</p>
+        </article>
+        <article class="feature-card card-glass">
+          <div class="feature-icon">
+            <img class="balance-icon" src="assets/icon-balance.svg" alt="" aria-hidden="true" />
+          </div>
+          <h3>Structured Law Navigation</h3>
+          <p>Articles, sections, and units are presented clearly.</p>
+        </article>
+        <article class="feature-card card-glass">
+          <div class="feature-icon">
+            <img class="balance-icon" src="assets/icon-balance.svg" alt="" aria-hidden="true" />
+          </div>
+          <h3>Fast Legal Discovery</h3>
+          <p>Find the right legal references in seconds.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section alt" id="statutes" #revealEl>
+    <div class="section-container">
+      <h2>Built on Indian Legal Foundations</h2>
+      <div class="grid law-grid">
+        <button type="button" class="law-card card-glass" id="constitution" (click)="askFromTemplate('Explain fundamental rights under Constitution of India')">
+          <span class="icon"><img class="balance-icon" src="assets/icon-balance.svg" alt="" aria-hidden="true" /></span>
+          <h3>Constitution of India</h3>
+          <p>Fundamental rights, governance, and institutions.</p>
+        </button>
+        <button type="button" class="law-card card-glass" id="criminal-law" (click)="askFromTemplate('Explain Bharatiya Nyaya Sanhita key offences')">
+          <span class="icon"><img class="balance-icon" src="assets/icon-balance.svg" alt="" aria-hidden="true" /></span>
+          <h3>Bharatiya Nyaya Sanhita</h3>
+          <p>Modern criminal code replacing IPC.</p>
+        </button>
+        <button type="button" class="law-card card-glass" (click)="askFromTemplate('Explain criminal procedure under BNSS')">
+          <span class="icon"><img class="balance-icon" src="assets/icon-balance.svg" alt="" aria-hidden="true" /></span>
+          <h3>Bharatiya Nagarik Suraksha Sanhita</h3>
+          <p>Criminal procedure, investigation, and safeguards.</p>
+        </button>
+        <button type="button" class="law-card card-glass" (click)="askFromTemplate('Explain evidence rules under BSA')">
+          <span class="icon"><img class="balance-icon" src="assets/icon-balance.svg" alt="" aria-hidden="true" /></span>
+          <h3>Bharatiya Sakshya Adhiniyam</h3>
+          <p>Law of evidence for admissibility and proof.</p>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" id="how-it-works" #revealEl>
+    <div class="section-container">
+      <h2>How It Works</h2>
+      <div class="timeline">
+        <article class="step card-glass">
+          <div class="step-no">1</div>
+          <h3>Ask your question</h3>
+          <p>Type legal queries in natural language.</p>
+        </article>
+        <article class="step card-glass">
+          <div class="step-no">2</div>
+          <h3>NyayaSetu finds the law</h3>
+          <p>Relevant Articles and Sections are retrieved.</p>
+        </article>
+        <article class="step card-glass">
+          <div class="step-no">3</div>
+          <h3>Clear legal explanation</h3>
+          <p>Structured answer with references and context.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section alt-glass" #revealEl>
+    <div class="section-container">
+      <h2>Popular Questions</h2>
+      <div class="popular-accordion">
+        <details class="popular-item card-glass">
+          <summary>What does Article 21 guarantee?</summary>
+          <p>Right to life and personal liberty with due legal procedure.</p>
+          <button type="button" (click)="askFromTemplate('What does Article 21 guarantee?')">Ask this question</button>
+        </details>
+        <details class="popular-item card-glass">
+          <summary>What punishment is given for theft?</summary>
+          <p>Depends on statute and facts; NyayaSetu can show exact provisions.</p>
+          <button type="button" (click)="askFromTemplate('What punishment is given for theft?')">Ask this question</button>
+        </details>
+        <details class="popular-item card-glass">
+          <summary>What is anticipatory bail?</summary>
+          <p>Pre-arrest bail protection under criminal procedure law.</p>
+          <button type="button" (click)="askFromTemplate('What is anticipatory bail?')">Ask this question</button>
+        </details>
+        <details class="popular-item card-glass">
+          <summary>What is freedom of speech?</summary>
+          <p>Constitutional freedom under Article 19 with lawful restrictions.</p>
+          <button type="button" (click)="askFromTemplate('What is freedom of speech under Constitution?')">Ask this question</button>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section disclaimer" #revealEl>
+    <div class="section-container notice-card card-glass">
+      <h2><img class="notice-icon" src="assets/icon-balance.svg" alt="" aria-hidden="true" /> Legal Notice</h2>
+      <p>NyayaSetu provides informational explanations based on official Indian statutes.</p>
+      <p>It does not constitute legal advice and should not replace consultation with a qualified advocate.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="section-container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/nyayasetu-official.png" alt="NyayaSetu logo" />
+        <h3>NyayaSetu</h3>
+        <p>Bridging Citizens and the Law</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a (click)="openAskFlow()">Ask the Law</a>
+        <a (click)="exploreLaws()">Browse Statutes</a>
+      </div>
+      <div>
+        <h4>Legal Sources</h4>
+        <a href="https://www.indiacode.nic.in/handle/123456789/1522" target="_blank" rel="noopener">Constitution of India</a>
+        <a href="https://www.indiacode.nic.in/handle/123456789/20062" target="_blank" rel="noopener">BNS 2023</a>
+        <a href="https://www.indiacode.nic.in/handle/123456789/20063" target="_blank" rel="noopener">BNSS 2023</a>
+        <a href="https://www.indiacode.nic.in/handle/123456789/20064" target="_blank" rel="noopener">BSA 2023</a>
+      </div>
+    </div>
+    <p class="copyright section-container">© 2026 NyayaSetu</p>
+  </footer>
+</div>
+

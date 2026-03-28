@@ -1,0 +1,21 @@
+<section class="auth-shell">
+  <div class="auth-card card-glass">
+    <img class="auth-logo" src="assets/nyayasetu-official.png" alt="NyayaSetu logo" />
+    <h1>Access NyayaSetu</h1>
+    <p>Sign in to continue to your legal assistant workspace.</p>
+
+    <input [(ngModel)]="email" type="email" placeholder="Email" />
+    <input [(ngModel)]="password" type="password" placeholder="Password" />
+
+    <button class="gold-button auth-submit" (click)="submit()" [disabled]="loading">
+      {{ loading ? 'Logging in...' : 'Login' }}
+    </button>
+
+    <div class="switch-link">
+      First time here?
+      <a routerLink="/signup">Sign up</a>
+    </div>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </div>
+</section>
